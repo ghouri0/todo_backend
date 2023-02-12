@@ -1,11 +1,10 @@
-const express = require("express");
+import express from "express";
 const app = express();
 const port = 8000;
-const cors = require("cors");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const appRouter = require("./routes/todoRoute.js");
-const path = require("path");
+import cors from 'cors'
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import appRouter from './routes/todoRoute.js'
 
 app.use(cors());
 app.use(function (req, res, next) {

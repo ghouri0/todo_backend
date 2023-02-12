@@ -1,5 +1,5 @@
-const Todo = require("../models/Todo");
-const express = require("express");
+import Todo from '../models/todo.js'
+import express from "express";
 const appRouter = express.Router();
 
 appRouter.post("/addItem", async (req, res) => {
@@ -69,4 +69,4 @@ appRouter.delete("/deleteItem/:item", async (req, res) => {
     }
   });
 
-module.exports = appRouter;
+  export default appRouter
