@@ -1,8 +1,9 @@
 import Todo from '../models/todo.js'
 import express from "express";
+import cors from 'cors'
 const appRouter = express.Router();
 
-appRouter.post("/addItem", async (req, res) => {
+appRouter.post("/addItem", cors(), async (req, res) => {
   // res.setHeader("Access-Control-Allow-Origin", "*");
   res.set("Access-Control-Allow-Origin", "*");
   console.log(req.body);
@@ -27,7 +28,7 @@ appRouter.post("/addItem", async (req, res) => {
   }
 });
 
-appRouter.get("/getItems", async (req, res) => {
+appRouter.get("/getItems", cors(), async (req, res) => {
   // res.setHeader("Access-Control-Allow-Origin", "*");
   res.set("Access-Control-Allow-Origin", "*");
   const items = await Todo.find({});
@@ -39,7 +40,7 @@ appRouter.get("/getItems", async (req, res) => {
   }
 });
 
-appRouter.put("/updateItem/:item/:time", async (req, res) => {
+appRouter.put("/updateItem/:item/:time", cors(), async (req, res) => {
   console.log(req.params);
   // res.setHeader("Access-Control-Allow-Origin", "*");
   res.set("Access-Control-Allow-Origin", "*");
@@ -55,7 +56,7 @@ appRouter.put("/updateItem/:item/:time", async (req, res) => {
   }
 });
 
-appRouter.delete("/deleteItem/:item", async (req, res) => {
+appRouter.delete("/deleteItem/:item", cors(), async (req, res) => {
     console.log(req.params);
     res.set("Access-Control-Allow-Origin", "*");
     const items = await Todo.findOneAndDelete(

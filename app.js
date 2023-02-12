@@ -7,10 +7,6 @@ import bodyParser from "body-parser";
 import appRouter from "./routes/todoRoute.js";
 
 app.use(cors());
-app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  next();
-});
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
