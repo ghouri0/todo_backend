@@ -3,7 +3,7 @@ const express = require("express");
 const appRouter = express.Router();
 
 appRouter.post("/addItem", async (req, res) => {
-  res.set("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Origin", "*");
   console.log(req.body);
   const exists = await Todo.findOne({ item: req.body.item });
   console.log("Query Result.... ", exists);
@@ -27,7 +27,7 @@ appRouter.post("/addItem", async (req, res) => {
 });
 
 appRouter.get("/getItems", async (req, res) => {
-  res.set("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Origin", "*");
   const items = await Todo.find({});
   if (items.length > 0) {
     console.log(items);
@@ -39,7 +39,7 @@ appRouter.get("/getItems", async (req, res) => {
 
 appRouter.put("/updateItem/:item/:time", async (req, res) => {
   console.log(req.params);
-  res.set("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Origin", "*");
   const items = await Todo.findOneAndUpdate(
     { item: req.params.item },
     { $set: { comp: req.params.time, status: "completed" } }
@@ -54,7 +54,7 @@ appRouter.put("/updateItem/:item/:time", async (req, res) => {
 
 appRouter.delete("/deleteItem/:item", async (req, res) => {
     console.log(req.params);
-    res.set("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const items = await Todo.findOneAndDelete(
       { item: req.params.item },
     );
